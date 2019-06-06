@@ -27,6 +27,14 @@ module.exports = {
         icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
       },
     },
+    // Settings for Gatsby Drupal source.
+    {
+      resolve: `gatsby-source-drupal`,
+      options: {
+        baseUrl: `http://dev-heilop.pantheonsite.io/`,
+        apiBase: `jsonapi`, // optional, defaults to `jsonapi`
+      },
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
