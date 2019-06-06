@@ -1,5 +1,6 @@
 import React from "react"
 import { Link } from "gatsby"
+import Img from 'gatsby-image'
 
 import Layout from "../components/layout"
 import SEO from "../components/seo"
@@ -18,7 +19,9 @@ const articleTemplate = (props) => {
       />
       
       <h1>{article.title}</h1>
-
+      <div style={{ paddingBottom : `1.45rem`, width: `100%` }}>
+        <Img fluid={article.relationships.image.localFile.childImageSharp.fluid} />
+      </div>
       <article dangerouslySetInnerHTML={{ __html: article.body.processed }} />
     </Layout>
   )
@@ -44,6 +47,15 @@ export const query = graphql`
       relationships {
         tags: field_tags {
           name,
+        }
+        image: field_image {
+          localFile {
+            childImageSharp {
+              fluid(maxWidth: 400, quality: 100) {
+                ...GatsbyImageSharpFluid
+              }
+            }
+          }
         }
       }
     }
